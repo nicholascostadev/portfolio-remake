@@ -1,11 +1,12 @@
-import { Roboto } from '@next/font/google'
+import { Container } from '@/components/Container'
+import { Hero } from '@/components/Hero'
 
 export default function Home() {
   return (
-    <main>
-      <div className="w-[1200px] max-w-full mx-auto">
-        <h1>Hello World</h1>
-      </div>
-    </main>
+    <div className="w-full">
+      <Container className="p-4 min-h-screen">
+        <Hero />
+      </Container>
+    </div>
   )
 }
