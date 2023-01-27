@@ -6,16 +6,28 @@ import { CaretRight } from 'phosphor-react'
 import { ToggleThemeButton } from '../ToggleThemeButton'
 import { sidebarContent } from './sidebarData'
 
+const retreiveFirstSentence = (text: string) => text.split(' ')[0]
+
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col items-start fixed w-72 p-4 border-r border-r-slate-100 dark:border-r-slate-800 h-screen">
-      <h1 className="text-2xl pb-10">nicholascostadev</h1>
+    <aside className="flex flex-col items-center xl:items-start fixed w-20 xl:w-72 p-4 bg-white dark:bg-slate-900 border-r border-r-slate-100 dark:border-r-slate-800 h-screen">
+      <h1 className="text-2xl pb-10 hidden xl:block">nicholascostadev</h1>
+      <h1 className="text-2xl pb-10 block xl:hidden text-center">ncdev</h1>
 
       <div className="flex flex-col gap-6 w-full justify-start items-start">
         {sidebarContent.map(({ title, links }) => (
-          <div className="w-full" key={title}>
-            <h2 className="mb-1 pb-1 border-b border-b-slate-200 dark:border-b-slate-600 text-slate-600 dark:text-slate-400 pointer-events-none select-none">
-              {title}
+          <div
+            className="w-full flex flex-col justify-center items-center xl:justify-start xl:items-start"
+            key={title}
+          >
+            <h2 className="mb-1 pb-1 border-b w-full text-center xl:text-left border-b-slate-200 dark:border-b-slate-600 text-slate-600 dark:text-slate-400 pointer-events-none select-none">
+              {title === 'Home page' ? (
+                <>
+                  Home <span className="hidden xl:inline">page</span>
+                </>
+              ) : (
+                <>{title}</>
+              )}
             </h2>
             {links.map((link) => {
               const isNextLink = !link.isExternal && !link.scroll
@@ -28,7 +40,7 @@ export const Sidebar = () => {
                   target={link.isExternal ? '_blank' : undefined}
                   data-disabled={link.disabled}
                   className={classNames(
-                    'inline-flex items-center gap-2 py-2 px-3  text-slate-800 dark:text-slate-50  transition-colors w-full rounded-md ',
+                    'flex justify-center items-center xl:justify-start xl:items-start gap-2 py-2 px-2 xl:px-3  text-slate-800 dark:text-slate-100  transition-colors w-auto xl:w-full rounded-md ',
                     'hover:bg-slate-100 dark:hover:bg-slate-800',
                     link.disabled &&
                       'pointer-events-none text-slate-800/30 hover:bg-transparent dark:pointer-events-none dark:text-slate-50/30 hover:dark:bg-transparent',
@@ -38,7 +50,7 @@ export const Sidebar = () => {
                   <Icon size={20} />
                   <div
                     className={classNames(
-                      'flex items-center gap-2',
+                      'hidden items-center gap-2 xl:flex',
                       link.disabled && 'select-none',
                     )}
                   >
@@ -53,7 +65,12 @@ export const Sidebar = () => {
             })}
           </div>
         ))}
-        <ToggleThemeButton />
+      </div>
+      <div className="pt-4 w-full">
+        <h2 className="mb-1 pb-1 border-b w-full text-center xl:text-left border-b-slate-200 dark:border-b-slate-600 text-slate-600 dark:text-slate-400 pointer-events-none select-none">
+          Tema
+        </h2>
+        <ToggleThemeButton className="flex gap-2 border-none w-full" />
       </div>
     </aside>
   )

@@ -18,10 +18,10 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex">
+      <body className="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 flex">
         <Providers>
           <Sidebar />
-          <div className="pl-72">{children}</div>
+          <main className="pl-20 xl:pl-72 w-full">{children}</main>
         </Providers>
       </body>
     </html>

@@ -17,7 +17,7 @@ const button = cva(
     variants: {
       color: {
         primary:
-          'hover:bg-slate-100 border-slate-200 dark:hover:bg-slate-700 dark:border-slate-600',
+          'hover:bg-slate-100 border-slate-200 dark:hover:bg-slate-800 dark:border-slate-600',
       },
       size: {
         small: 'p-2',
