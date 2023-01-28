@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { File, GithubLogo, Globe } from 'phosphor-react'
+import { GithubLogo, Globe } from 'phosphor-react'
 
 type ProjectCardProps = {
   title: string
@@ -19,18 +19,24 @@ export const ProjectCard = ({
   websiteUrl,
 }: ProjectCardProps) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-slate-800 dark:border-slate-700">
-      <div className="relative">
-        <Image className="rounded-t-lg" src={imageUrl} alt="" fill />
+    <div className="max-w-md flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-slate-800 dark:border-slate-700">
+      <div className="relative w-full h-64 max-h-96">
+        <Image
+          className="rounded-t-lg object-contain max-h-96 w-full"
+          src={imageUrl}
+          alt=""
+          width={500}
+          height={500}
+        />
       </div>
-      <div className="p-5 flex flex-col h-full">
+      <div className="p-5 flex-1 flex flex-col">
         <h5 className="mb-2 text-2xl font-bold tracking-tight dark:text-slate-100 text-slate-800">
           {title}
         </h5>
         <p className="mb-3 font-normal text-slate-700 dark:text-slate-400">
           {description}
         </p>
-        <div className="w-full flex flex-col flex-1 h-full gap-2 justify-end pt-2">
+        <div className="w-full flex flex-col flex-1 gap-2 justify-end pt-2">
           <p className="text-slate-600 dark:text-slate-500 border-b border-b-slate-100 dark:border-b-slate-700 inline-flex select-none pointer-events-none">
             See it on
           </p>
