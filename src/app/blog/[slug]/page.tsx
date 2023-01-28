@@ -41,7 +41,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
     <Container className="pt-40 w-[900px]">
       <div className="flex justify-between items-end gap-4 py-10">
         <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title}</h1>
-        <span className="text-slate-800 dark:text-slate-400">
+        <span className="text-slate-800 dark:text-slate-400 inline-flex">
           {formatDate(post.publishedAt)}
         </span>
       </div>
