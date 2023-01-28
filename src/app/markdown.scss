@@ -51,7 +51,7 @@ html[data-theme='dark'] {
     }
 
     * > code {
-      background: rgb(30 41 59);
+      background: rgb(30, 41, 59);
       border-radius: 6px;
       padding: 0 0.25rem;
     }
@@ -402,9 +402,13 @@ html[data-theme='light'] {
     }
 
     * > code {
-      background: rgb(30 41 59);
+      background: rgb(226 232 240);
       border-radius: 6px;
       padding: 0 0.25rem;
+    }
+
+    code[class*='language-'] {
+      background: inherit;
     }
 
     a {
