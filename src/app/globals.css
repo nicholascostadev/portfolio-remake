@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --dark-blue: rgb(96 165 250);
+    --light-blue: rgb(59 130 246);
+  }
+
   * {
     @apply scroll-smooth;
   }

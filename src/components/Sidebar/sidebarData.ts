@@ -8,21 +8,6 @@ import {
   TwitterLogo,
 } from 'phosphor-react'
 
-type SidebarContent = {
-  title: string
-  links: {
-    label: string
-    href: string
-    isExternal?: boolean
-    scroll?: boolean
-    icon?: React.ForwardRefExoticComponent<
-      IconProps & React.RefAttributes<SVGSVGElement>
-    >
-    disabled?: boolean
-    disabledReason?: string
-  }[]
-}[]
-
 export const sidebarContent: SidebarContent = [
   {
     title: 'Home page',
@@ -48,8 +33,6 @@ export const sidebarContent: SidebarContent = [
         label: 'Main Blog',
         href: '/blog',
         icon: Scroll,
-        disabled: true,
-        disabledReason: 'Coming soon!',
       },
     ],
   },
@@ -77,3 +60,18 @@ export const sidebarContent: SidebarContent = [
     ],
   },
 ]
+
+type SidebarContent = {
+  title: string
+  links: {
+    label: string
+    href: string
+    isExternal?: boolean
+    scroll?: boolean
+    icon?: React.ForwardRefExoticComponent<
+      IconProps & React.RefAttributes<SVGSVGElement>
+    >
+    disabled?: boolean
+    disabledReason?: string
+  }[]
+}[]

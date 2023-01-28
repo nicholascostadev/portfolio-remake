@@ -6,13 +6,15 @@ import { CaretRight } from 'phosphor-react'
 import { ToggleThemeButton } from '../ToggleThemeButton'
 import { sidebarContent } from './sidebarData'
 
-const retreiveFirstSentence = (text: string) => text.split(' ')[0]
-
 export const Sidebar = () => {
   return (
     <aside className="flex flex-col items-center xl:items-start fixed w-20 xl:w-72 p-4 bg-white dark:bg-slate-900 border-r border-r-slate-100 dark:border-r-slate-800 h-screen">
-      <h1 className="text-2xl pb-10 hidden xl:block">nicholascostadev</h1>
-      <h1 className="text-2xl pb-10 block xl:hidden text-center">ncdev</h1>
+      <Link href="/">
+        <h1 className="text-2xl pb-10 hidden xl:block">nicholascostadev</h1>
+      </Link>
+      <Link href="/">
+        <h1 className="text-2xl pb-10 block xl:hidden text-center">ncdev</h1>
+      </Link>
 
       <div className="flex flex-col gap-6 w-full justify-start items-start">
         {sidebarContent.map(({ title, links }) => (
@@ -36,7 +38,7 @@ export const Sidebar = () => {
               return (
                 <Component
                   key={link.label}
-                  href={link.href}
+                  href={isNextLink ? link.href : `/${link.href}`}
                   target={link.isExternal ? '_blank' : undefined}
                   data-disabled={link.disabled}
                   className={classNames(

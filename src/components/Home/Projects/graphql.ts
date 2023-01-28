@@ -1,22 +1,10 @@
+import { GQLProjectResponse } from '@/@types'
 import { gql } from '@apollo/client'
-import { Project } from './projectsData'
 
 export type GQLResponse = {
   projects: {
     data: {
-      attributes: {
-        title: string
-        description: string
-        imageUrl: {
-          data: {
-            attributes: {
-              url: string
-            }
-          }
-        }
-        githubUrl?: string | undefined
-        websiteUrl?: string | undefined
-      }
+      attributes: GQLProjectResponse
     }[]
   }
 }
