@@ -25,4 +25,10 @@ export type GQLProjectResponse = {
   }
   githubUrl?: string | undefined
   websiteUrl?: string | undefined
+  techs: {
+    data: {
+      name: string
+      link: string
+    }[]
+  }
 }

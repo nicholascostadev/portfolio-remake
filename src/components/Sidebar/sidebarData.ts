@@ -1,4 +1,5 @@
 import {
+  Briefcase,
   GithubLogo,
   IconProps,
   IdentificationBadge,
@@ -13,16 +14,25 @@ export const sidebarContent: SidebarContent = [
     title: 'Home page',
     links: [
       {
-        label: 'Projects',
-        href: '#projects',
-        scroll: true,
-        icon: Rows,
-      },
-      {
         label: 'About',
         href: '#about-me',
         scroll: true,
         icon: IdentificationBadge,
+        name: 'Go to About section',
+      },
+      {
+        label: 'Work Experience',
+        href: '#experiences',
+        scroll: true,
+        icon: Briefcase,
+        name: 'Go to Work Experience section',
+      },
+      {
+        label: 'Projects',
+        href: '#projects',
+        scroll: true,
+        icon: Rows,
+        name: 'Go to Projects section',
       },
     ],
   },
@@ -33,6 +43,7 @@ export const sidebarContent: SidebarContent = [
         label: 'Main Blog',
         href: '/blog',
         icon: Scroll,
+        name: 'Go to Blog page',
       },
     ],
   },
@@ -44,18 +55,21 @@ export const sidebarContent: SidebarContent = [
         href: 'https://twitter.com/nicholascosta04',
         isExternal: true,
         icon: TwitterLogo,
+        name: 'Go to my Twitter profile',
       },
       {
         label: 'GitHub',
         href: 'https://github.com/nicholascostadev',
         isExternal: true,
         icon: GithubLogo,
+        name: 'Go to my GitHub profile',
       },
       {
         label: 'LinkedIn',
         href: 'https://linkedin.com/in/nicholascostadev',
         isExternal: true,
         icon: LinkedinLogo,
+        name: 'Go to my LinkedIn profile',
       },
     ],
   },
@@ -73,5 +87,6 @@ type SidebarContent = {
     >
     disabled?: boolean
     disabledReason?: string
+    name: string
   }[]
 }[]

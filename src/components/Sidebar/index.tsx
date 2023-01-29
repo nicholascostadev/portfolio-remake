@@ -10,9 +10,11 @@ export const Sidebar = () => {
   return (
     <aside className="flex flex-col items-center xl:items-start fixed w-20 xl:w-72 p-4 bg-white dark:bg-slate-900 border-r border-r-slate-100 dark:border-r-slate-800 h-screen">
       <Link href="/">
+        <span className="sr-only">Go to Home page</span>
         <h1 className="text-2xl pb-10 hidden xl:block">nicholascostadev</h1>
       </Link>
       <Link href="/">
+        <span className="sr-only">Go to Home page</span>
         <h1 className="text-2xl pb-10 block xl:hidden text-center">ncdev</h1>
       </Link>
 
@@ -50,6 +52,7 @@ export const Sidebar = () => {
                   rel="noreferrer"
                 >
                   <Icon size={20} />
+                  <span className="inline md:hidden sr-only">{link.name}</span>
                   <div
                     className={classNames(
                       'hidden items-center gap-2 xl:flex',
