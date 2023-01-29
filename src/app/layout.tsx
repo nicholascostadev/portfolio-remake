@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 flex">
         <Providers>
           <Sidebar />
-          <main className="pl-20 xl:pl-72 w-full">{children}</main>
+          <main className="pl-20 xl:pl-72 w-full pb-10">{children}</main>
         </Providers>
       </body>
     </html>

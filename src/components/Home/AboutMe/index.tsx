@@ -2,8 +2,11 @@ import Image from 'next/image'
 
 export const AboutMe = () => {
   return (
-    <div className="flex justify-center items-center h-screen" id="about-me">
-      <div className="flex gap-20">
+    <div
+      className="flex justify-center items-center h-screen pt-20 md:pt-0"
+      id="about-me"
+    >
+      <div className="flex gap-20 flex-col md:flex-row">
         <div>
           <h4 className="text-4xl border-b border-b-slate-100 dark:border-b-slate-700 mb-4 pb-2">
             About Me

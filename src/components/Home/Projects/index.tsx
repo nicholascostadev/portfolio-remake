@@ -21,11 +21,11 @@ export const Projects = async () => {
     }))
 
   return (
-    <div id="projects">
+    <div id="projects" className="pt-20 md:pt-0">
       <h3 className="text-5xl pt-4 pb-8 dark:text-slate-100 text-slate-800">
         Projects
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">
         {projects &&
           projects.map((proj) => (
             <ProjectCard
