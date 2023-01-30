@@ -1,27 +1,19 @@
 import { ProjectCard } from '../ProjectCard'
-import { GET_ALL_POSTS, GQLResponse } from './graphql'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { GET_ALL_PROJECTS, GQLResponse } from './graphql'
 
 const client = new ApolloClient({
-  uri: `${process.env.STRAPI_BACKEND_URL}/graphql`,
+  uri: 'https://sa-east-1.cdn.hygraph.com/content/cldiqzg6703p301t92dv7dyxo/master',
   cache: new InMemoryCache(),
   ssrMode: true,
 })
 
 export const Projects = async () => {
   const { data } = await client.query<GQLResponse>({
-    query: GET_ALL_POSTS,
+    query: GET_ALL_PROJECTS,
   })
 
-  console.log({ data })
-
-  const projects = data?.projects?.data
-    .map((proj) => proj.attributes)
-    .map((proj) => ({
-      ...proj,
-      imageUrl: proj.imageUrl.data.attributes.url,
-      techs: proj.techs.data.map((tech) => ({ ...tech })),
-    }))
+  const projects = data.projects
 
   return (
     <div id="projects" className="pt-20 md:pt-0">
@@ -35,10 +27,10 @@ export const Projects = async () => {
               key={proj?.title}
               title={proj?.title}
               description={proj?.description}
-              imageUrl={`${process.env.STRAPI_BACKEND_URL}${proj?.imageUrl}`}
-              githubRepo={proj?.githubUrl}
+              imageUrl={proj.imageUrl.url}
+              githubRepo={proj.githubRepo}
               websiteUrl={proj?.websiteUrl}
-              techs={proj.techs}
+              techs={proj.techs.data}
             />
           ))}
       </div>

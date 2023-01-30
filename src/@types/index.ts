@@ -6,13 +6,6 @@ export type Project = {
   websiteUrl?: string
 }
 
-export type Post = {
-  title: string
-  content: string
-  slug: string
-  publishedAt: string
-}
-
 export type GQLProjectResponse = {
   title: string
   description: string
@@ -29,6 +22,39 @@ export type GQLProjectResponse = {
     data: {
       name: string
       link: string
+    }[]
+  }
+}
+
+export type Post = {
+  title: string
+  description: string
+  published_at: string
+  slug: string
+  id: number
+  user: {
+    name: string
+    profile_image: string
+  }
+}
+
+export interface SinglePostResponse extends Post {
+  body_markdown: string
+}
+
+export type ProjectsType = {
+  description: string
+  publishedAt: string
+  title: string
+  githubRepo: string
+  websiteUrl: string
+  imageUrl: {
+    url: string
+  }
+  techs: {
+    data: {
+      link: string
+      name: string
     }[]
   }
 }

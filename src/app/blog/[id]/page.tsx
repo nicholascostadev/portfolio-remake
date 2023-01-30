@@ -1,31 +1,19 @@
 import { Container } from '@/components/Container'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
-import { GET_SPECIFIC_POST, GQLResponse } from './graphql'
 import ReactMarkdown from 'react-markdown'
 import rehypePrismPlus from 'rehype-prism-plus'
 import { formatDate } from '@/utils/formatDate'
-
-const client = new ApolloClient({
-  uri: `${process.env.STRAPI_BACKEND_URL}/graphql`,
-  cache: new InMemoryCache(),
-  ssrMode: true,
-})
+import { SinglePostResponse } from '@/@types'
 
 type BlogPostProps = {
   params: {
-    slug: string
+    id: string
   }
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-  const { data } = await client.query<GQLResponse>({
-    query: GET_SPECIFIC_POST,
-    variables: {
-      slug: params.slug,
-    },
-  })
+  const response = await fetch(`https://dev.to/api/articles/${params.id}`)
 
-  const post = data.posts.data[0]?.attributes || {}
+  const post = (await response.json()) as SinglePostResponse
 
   if (Object.keys(post).length === 0) {
     return (
@@ -42,7 +30,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
       <div className="flex justify-between items-end gap-4 py-10">
         <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title}</h1>
         <span className="text-slate-800 dark:text-slate-400 inline-flex">
-          {formatDate(post.publishedAt)}
+          {formatDate(post.published_at || String(new Date()))}
         </span>
       </div>
       <div>
@@ -50,7 +38,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           rehypePlugins={[rehypePrismPlus]}
           className="markdown-content"
         >
-          {post.content}
+          {post.body_markdown}
         </ReactMarkdown>
       </div>
     </Container>

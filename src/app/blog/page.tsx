@@ -1,19 +1,12 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
-import { GET_ALL_POSTS, GQLResponse } from './graphql'
 import { PostCard } from '@/components/Blog/PostCard'
-
-const client = new ApolloClient({
-  uri: `${process.env.STRAPI_BACKEND_URL}/graphql`,
-  cache: new InMemoryCache(),
-  ssrMode: true,
-})
+import { Post } from '@/@types'
 
 export default async function Blog() {
-  const { data } = await client.query<GQLResponse>({
-    query: GET_ALL_POSTS,
-  })
+  const response = await fetch(
+    'https://dev.to/api/articles?username=nicholascostadev',
+  )
 
-  const posts = data.posts.data.map((post) => post?.attributes || [])
+  const data = (await response.json()) as Post[]
 
   return (
     <div className="w-full p-4">
@@ -27,8 +20,15 @@ export default async function Blog() {
         <h2 className="text-3xl">All posts</h2>
 
         <div className="flex flex-col gap-4">
-          {posts.map((post) => (
-            <PostCard key={post.slug} {...post} />
+          {data.map((post) => (
+            <PostCard
+              key={post.slug}
+              content={post.description}
+              publishedAt={post.published_at}
+              slug={post.slug}
+              title={post.title}
+              postId={post.id}
+            />
           ))}
         </div>
       </div>

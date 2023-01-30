@@ -1,33 +1,21 @@
-import { GQLProjectResponse } from '@/@types'
+import { GQLProjectResponse, ProjectsType } from '@/@types'
 import { gql } from '@apollo/client'
 
 export type GQLResponse = {
-  projects: {
-    data: {
-      attributes: GQLProjectResponse
-    }[]
-  }
+  projects: ProjectsType[]
 }
 
-export const GET_ALL_POSTS = gql`
+export const GET_ALL_PROJECTS = gql`
   query {
-    projects(sort: "createdAt:DESC") {
-      data {
-        attributes {
-          title
-          description
-          githubUrl
-          websiteUrl
-          imageUrl {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          techs
-          createdAt
-        }
+    projects(orderBy: publishedAt_DESC) {
+      description
+      publishedAt
+      techs
+      title
+      websiteUrl
+      githubRepo
+      imageUrl {
+        url
       }
     }
   }
