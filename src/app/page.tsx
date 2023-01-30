@@ -10,6 +10,7 @@ export default function Home() {
       <Container className="p-4 min-h-screen">
         <Hero />
         {/* <AboutMe /> */}
+        {/* @ts-ignore */}
         <Experiences />
         {/* @ts-ignore */}
         <Projects />
