@@ -1,7 +1,21 @@
 import { ExperienceCard } from '../ExperienceCard'
-import { experiences } from './experiencesData'
 
-export const Experiences = () => {
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { GET_ALL_EXPERIENCES, GQLResponse } from './graphql'
+
+const client = new ApolloClient({
+  uri: process.env.CMS_URL,
+  cache: new InMemoryCache(),
+  ssrMode: true,
+})
+
+export const Experiences = async () => {
+  const { data } = await client.query<GQLResponse>({
+    query: GET_ALL_EXPERIENCES,
+  })
+
+  const experiences = data.experiences
+
   return (
     <div id="experiences" className="py-20">
       <h3 className="text-4xl pb-8">Experiences</h3>
@@ -13,9 +27,9 @@ export const Experiences = () => {
             <>
               <ExperienceCard
                 title={experience.title}
-                description={experience.description}
+                description={experience.description.text}
                 startedAt={experience.startedAt}
-                current={experience.current}
+                current={experience.endedAt === null}
                 endedAt={experience.endedAt}
               />
               {!isLastJob && (

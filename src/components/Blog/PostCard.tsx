@@ -18,7 +18,7 @@ export const PostCard = ({
   postId,
 }: PostCardProps) => {
   return (
-    <div className="rounded-md border bg-white dark:bg-slate-900 shadow border-gray-200 dark:border-slate-800 p-4">
+    <div className="rounded-md border bg-white dark:bg-slate-900 shadow border-gray-200 dark:border-slate-800 p-5">
       <div className="flex justify-between items-end gap-4 py-2">
         <Link href={`/blog/${postId}`}>
           <h3 className="text-xl">{title}</h3>

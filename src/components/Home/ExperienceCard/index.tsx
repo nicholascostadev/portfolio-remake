@@ -1,4 +1,5 @@
 import { formatDate } from '../../../utils/formatDate'
+
 type ExperienceCardProps = {
   title: string
   current?: boolean
@@ -14,8 +15,10 @@ export const ExperienceCard = ({
   current,
   endedAt,
 }: ExperienceCardProps) => {
+  const desc = description.split('\n').map((str) => str.replaceAll('\\n', ''))
+
   return (
-    <div className="border flex flex-col gap-2 bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 p-4 rounded-md shadow">
+    <div className="border flex flex-col gap-2 bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 p-5 rounded-md shadow">
       <div className="flex justify-between items-start">
         <h4 className="text-xl">
           {title}{' '}
@@ -37,7 +40,11 @@ export const ExperienceCard = ({
           )}
         </div>
       </div>
-      <p className="text-slate-700 dark:text-slate-400">{description}</p>
+      <div className="text-slate-700 dark:text-slate-400">
+        {desc.map((str) => (
+          <p key={str}>{str}</p>
+        ))}
+      </div>
     </div>
   )
 }
