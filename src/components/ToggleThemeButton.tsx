@@ -24,7 +24,15 @@ export const ToggleThemeButton = ({ className }: ToggleThemeButtonProps) => {
       name="Trocar tema"
     >
       <span className="not-sr-only hidden xl:inline-flex">Trocar para </span>
-      {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+      {theme ? (
+        theme === 'dark' ? (
+          <Sun size={20} />
+        ) : (
+          <Moon size={20} />
+        )
+      ) : (
+        <Sun size={20} />
+      )}
     </IconButton>
   )
 }
