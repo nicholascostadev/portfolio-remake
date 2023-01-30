@@ -13,13 +13,13 @@ export const sidebarContent: SidebarContent = [
   {
     title: 'Home page',
     links: [
-      {
-        label: 'About',
-        href: '#about-me',
-        scroll: true,
-        icon: IdentificationBadge,
-        name: 'Go to About section',
-      },
+      // {
+      //   label: 'About',
+      //   href: '#about-me',
+      //   scroll: true,
+      //   icon: IdentificationBadge,
+      //   name: 'Go to About section',
+      // },
       {
         label: 'Work Experience',
         href: '#experiences',
