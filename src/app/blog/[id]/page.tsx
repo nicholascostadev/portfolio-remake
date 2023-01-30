@@ -11,7 +11,7 @@ type BlogPostProps = {
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-  const response = await fetch(`https://dev.to/api/articles/${params.id}`)
+  const response = await fetch(`${process.env.DEVTO_URL}${params.id}`)
 
   const post = (await response.json()) as SinglePostResponse
 

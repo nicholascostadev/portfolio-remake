@@ -3,7 +3,7 @@ import { Post } from '@/@types'
 
 export default async function Blog() {
   const response = await fetch(
-    'https://dev.to/api/articles?username=nicholascostadev',
+    `${process.env.DEVTO_URL}?username=nicholascostadev`,
   )
 
   const data = (await response.json()) as Post[]

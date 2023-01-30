@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { GET_ALL_PROJECTS, GQLResponse } from './graphql'
 
 const client = new ApolloClient({
-  uri: 'https://sa-east-1.cdn.hygraph.com/content/cldiqzg6703p301t92dv7dyxo/master',
+  uri: process.env.CMS_URL,
   cache: new InMemoryCache(),
   ssrMode: true,
 })
