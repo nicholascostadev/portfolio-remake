@@ -20,14 +20,14 @@ export const ExperienceCard = ({
   return (
     <div className="border flex flex-col gap-2 bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 p-5 rounded-md shadow">
       <div className="flex justify-between items-start">
-        <h4 className="text-xl">
+        <h3 className="text-xl">
           {title}{' '}
           {current && (
             <span className="text-slate-700 dark:text-slate-400 text-sm">
               (Current role)
             </span>
           )}
-        </h4>
+        </h3>
         <div>
           <span className="text-slate-700 dark:text-slate-400 text-sm">
             started at {formatDate(startedAt || String(new Date()))}

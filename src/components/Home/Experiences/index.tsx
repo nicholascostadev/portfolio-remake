@@ -18,7 +18,7 @@ export const Experiences = async () => {
 
   return (
     <div id="experiences" className="py-20">
-      <h3 className="text-4xl pb-8">Experiences</h3>
+      <h2 className="text-4xl pb-8">Experiences</h2>
 
       <div className="flex flex-col">
         {experiences.reverse().map((experience, index) => {
