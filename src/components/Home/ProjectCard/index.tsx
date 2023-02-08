@@ -35,9 +35,9 @@ export const ProjectCard = ({
         />
       </div>
       <div className="p-5 flex-1 flex flex-col">
-        <h5 className="pb-1 text-2xl font-bold tracking-tight dark:text-slate-100 text-slate-800">
+        <h4 className="pb-1 text-2xl font-bold tracking-tight dark:text-slate-100 text-slate-800">
           {title}
-        </h5>
+        </h4>
         <div className="flex flex-wrap gap-2 text-slate-500 dark:text-slate-300 pb-2">
           {techs.map((tech) => {
             const Element = tech.link !== '' ? 'a' : 'span'
