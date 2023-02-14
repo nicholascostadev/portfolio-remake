@@ -20,7 +20,7 @@ export default async function Blog() {
         <h2 className="text-3xl py-4">All posts</h2>
 
         <div className="flex flex-col gap-4">
-          {data.map((post) => (
+          {data && data.length > 0 && data.map((post) => (
             <PostCard
               key={post.slug}
               content={post.description}
