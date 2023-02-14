@@ -27,20 +27,23 @@ const generateMappedHeadings = (postId: number) =>
       ...acc,
       [heading]: (props: HeadingProps) => (
         <a
-          onClick={() =>
-            handleCopyToClipboard(
-              `${process.env.NEXT_PUBLIC_URL}/blog/${postId}/#${props.id}`,
-            )
-          }
           href={`#${props.id}`}
           className="group !flex !items-baseline !gap-2 !text-white"
         >
           <Heading {...props} />
 
-          <Link
-            size={24}
-            className="hidden group-hover:inline-block group-hover:opacity-40"
-          />
+          <button
+            onClick={() =>
+              handleCopyToClipboard(
+                `${process.env.NEXT_PUBLIC_URL}/blog/${postId}/#${props.id}`,
+              )
+            }
+          >
+            <Link
+              size={24}
+              className="hidden group-hover:inline-block group-hover:opacity-40"
+            />
+          </button>
         </a>
       ),
     }
