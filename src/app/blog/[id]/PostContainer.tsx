@@ -9,10 +9,42 @@ import { useEffect, useState } from 'react'
 import { getSlugByTitle } from '../../../utils/getSlugByTitle'
 import { getHeadingsFromMarkdown } from '../../../utils/getHeadingsFromMarkdown'
 import { TableOfContentsLine } from './TableOfContentsLine'
+import { handleCopyToClipboard } from '../../../utils/copyToClipboard'
+import { Link } from 'phosphor-react'
+import { HeadingProps } from 'react-markdown/lib/ast-to-react'
 
 type PostContainerProps = {
   post: SinglePostResponse
 }
+
+const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const
+
+const generateMappedHeadings = (postId: number) =>
+  headings.reduce((acc, heading) => {
+    const Heading = heading
+
+    return {
+      ...acc,
+      [heading]: (props: HeadingProps) => (
+        <a
+          onClick={() =>
+            handleCopyToClipboard(
+              `${process.env.NEXT_PUBLIC_URL}/blog/${postId}/#${props.id}`,
+            )
+          }
+          href={`#${props.id}`}
+          className="group !flex !items-baseline !gap-2 !text-white"
+        >
+          <Heading {...props} />
+
+          <Link
+            size={24}
+            className="hidden group-hover:inline-block group-hover:opacity-40"
+          />
+        </a>
+      ),
+    }
+  }, {} as any)
 
 export const PostContainer = ({ post }: PostContainerProps) => {
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -83,6 +115,12 @@ export const PostContainer = ({ post }: PostContainerProps) => {
           <ReactMarkdown
             rehypePlugins={[rehypePrismPlus, rehypeSlug]}
             className="markdown-content"
+            components={{
+              a: (props) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" />
+              ),
+              ...generateMappedHeadings(post.id),
+            }}
           >
             {post.body_markdown}
           </ReactMarkdown>

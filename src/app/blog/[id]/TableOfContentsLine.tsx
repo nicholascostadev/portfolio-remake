@@ -1,6 +1,7 @@
 'use client'
 
 import { clsxm } from '@/utils/clsxm'
+import { handleCopyToClipboard } from '@/utils/copyToClipboard'
 import { getSlugByTitle } from '@/utils/getSlugByTitle'
 import { Link } from 'phosphor-react'
 
@@ -15,10 +16,6 @@ export const TableOfContentsLine = ({
   isActive,
   postId,
 }: TableOfContentsLineProps) => {
-  const handleCopyToClipboard = (url: string) => {
-    navigator.clipboard.writeText(url)
-  }
-
   return (
     <a
       href={`#${getSlugByTitle(content)}`}
