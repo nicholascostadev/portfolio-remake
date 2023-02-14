@@ -74,11 +74,13 @@ export const PostContainer = ({ post }: PostContainerProps) => {
     )
 
     itemIds.forEach((id) => {
-      observer.observe(document.getElementById(id)!)
+      if (document.getElementById(id))
+        observer.observe(document.getElementById(id)!)
     })
     return () => {
       itemIds.forEach((id) => {
-        observer.unobserve(document.getElementById(id)!)
+        if (document.getElementById(id))
+          observer.unobserve(document.getElementById(id)!)
       })
     }
   }, [itemIds])
