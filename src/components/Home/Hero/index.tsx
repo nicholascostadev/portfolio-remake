@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 export const Hero = () => {
   return (
-    <div className="flex flex-col pt-20 lg:pt-0 lg:flex-row justify-center lg:justify-between gap-10 lg:gap-4 items-center h-[70vh]">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl text-center md:text-left text-slate-800 dark:text-slate-100">
+    <div className="flex h-[70vh] flex-col items-center justify-center gap-10 pt-20 lg:flex-row lg:justify-between lg:gap-4 lg:pt-0">
+      <h1 className="text-center text-4xl text-slate-800 dark:text-slate-100 sm:text-5xl md:text-left md:text-6xl">
         I can make your brilliant <br /> ideas come true
       </h1>
       <Image

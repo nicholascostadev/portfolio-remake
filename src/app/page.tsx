@@ -7,7 +7,7 @@ import { Projects } from '@/components/Home/Projects'
 export default function Home() {
   return (
     <div className="w-full">
-      <Container className="p-4 min-h-screen">
+      <Container className="min-h-screen p-4">
         <Hero />
         {/* <AboutMe /> */}
         {/* @ts-ignore */}

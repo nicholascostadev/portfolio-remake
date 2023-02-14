@@ -50,10 +50,10 @@ export const PostContainer = ({ post }: PostContainerProps) => {
 
   return (
     <>
-      <div className="2xl:fixed xl:mx-0 mx-auto max-w-full right-0 w-full 2xl:w-[calc(100%-1200px)]">
+      <div className="right-0 mx-auto w-full max-w-full xl:mx-0 2xl:fixed 2xl:w-[calc(100%-1200px)]">
         <div className="flex flex-col gap-4 py-10 pl-6">
           <h2 className="text-2xl">Table of Contents</h2>
-          <ul className="flex flex-col gap-2 -ml-[3.2rem]">
+          <ul className="-ml-[3.2rem] flex flex-col gap-2">
             {headings.map(({ heading, content }) => (
               <li
                 key={content}
@@ -75,7 +75,7 @@ export const PostContainer = ({ post }: PostContainerProps) => {
       <div className="w-[900px] max-w-full">
         <div className="flex flex-col gap-4 py-10">
           <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title} </h1>
-          <span className="text-base text-slate-800 dark:text-slate-400 inline-flex">
+          <span className="inline-flex text-base text-slate-800 dark:text-slate-400">
             Posted on {formatDate(post.published_at || String(new Date()))}
           </span>
         </div>

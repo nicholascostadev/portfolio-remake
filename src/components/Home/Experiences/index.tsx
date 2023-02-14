@@ -18,7 +18,7 @@ export const Experiences = async () => {
 
   return (
     <div id="experiences" className="py-20">
-      <h2 className="text-4xl pb-8">Experiences</h2>
+      <h2 className="pb-8 text-4xl">Experiences</h2>
 
       <div className="flex flex-col">
         {experiences.reverse().map((experience, index) => {
@@ -33,8 +33,8 @@ export const Experiences = async () => {
                 endedAt={experience.endedAt}
               />
               {!isLastJob && (
-                <div className="flex justify-center items-center">
-                  <div className="w-[2px] h-10 bg-slate-400" />
+                <div className="flex items-center justify-center">
+                  <div className="h-10 w-[2px] bg-slate-400" />
                 </div>
               )}
             </>

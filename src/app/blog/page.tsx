@@ -9,27 +9,29 @@ export default async function Blog() {
   const data = (await response.json()) as Post[]
 
   return (
-    <div className="w-[1400px] max-w-full mx-auto p-4">
-      <div className="flex justify-center items-center h-[70vh]">
-        <h1 className="text-5xl text-center">
+    <div className="mx-auto w-[1400px] max-w-full p-4">
+      <div className="flex h-[70vh] items-center justify-center">
+        <h1 className="text-center text-5xl">
           Here lay all of my thoughts,
           <br /> keep that in mind
         </h1>
       </div>
       <div className="flex flex-col">
-        <h2 className="text-3xl py-4">All posts</h2>
+        <h2 className="py-4 text-3xl">All posts</h2>
 
         <div className="flex flex-col gap-4">
-          {data && data.length > 0 && data.map((post) => (
-            <PostCard
-              key={post.slug}
-              content={post.description}
-              publishedAt={post.published_at}
-              slug={post.slug}
-              title={post.title}
-              postId={post.id}
-            />
-          ))}
+          {data &&
+            data.length > 0 &&
+            data.map((post) => (
+              <PostCard
+                key={post.slug}
+                content={post.description}
+                publishedAt={post.published_at}
+                slug={post.slug}
+                title={post.title}
+                postId={post.id}
+              />
+            ))}
         </div>
       </div>
     </div>

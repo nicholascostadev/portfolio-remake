@@ -18,22 +18,22 @@ export const ExperienceCard = ({
   const desc = description.split('\n').map((str) => str.replaceAll('\\n', ''))
 
   return (
-    <div className="border flex flex-col gap-2 bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 p-5 rounded-md shadow">
-      <div className="flex justify-between items-start">
+    <div className="flex flex-col gap-2 rounded-md border border-slate-100 bg-white p-5 shadow dark:border-slate-700 dark:bg-slate-800">
+      <div className="flex items-start justify-between">
         <h3 className="text-xl">
           {title}{' '}
           {current && (
-            <span className="text-slate-700 dark:text-slate-400 text-sm">
+            <span className="text-sm text-slate-700 dark:text-slate-400">
               (Current role)
             </span>
           )}
         </h3>
         <div>
-          <span className="text-slate-700 dark:text-slate-400 text-sm">
+          <span className="text-sm text-slate-700 dark:text-slate-400">
             started at {formatDate(startedAt || String(new Date()))}
           </span>
           {endedAt && (
-            <span className="text-slate-700 dark:text-slate-400 text-sm">
+            <span className="text-sm text-slate-700 dark:text-slate-400">
               {' '}
               until {formatDate(endedAt || String(new Date()))}
             </span>

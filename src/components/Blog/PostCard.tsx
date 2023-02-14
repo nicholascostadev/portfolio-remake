@@ -18,12 +18,12 @@ export const PostCard = ({
   postId,
 }: PostCardProps) => {
   return (
-    <div className="rounded-md border bg-white dark:bg-slate-900 shadow border-gray-200 dark:border-slate-800 p-5">
-      <div className="flex justify-between items-end gap-4 py-2">
+    <div className="rounded-md border border-gray-200 bg-white p-5 shadow dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex items-end justify-between gap-4 py-2">
         <Link href={`/blog/${postId}`}>
           <h3 className="text-xl">{title}</h3>
         </Link>
-        <span className="text-slate-800 dark:text-slate-400 text-sm">
+        <span className="text-sm text-slate-800 dark:text-slate-400">
           {formatDate(publishedAt || String(new Date()))}
         </span>
       </div>

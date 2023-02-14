@@ -8,23 +8,23 @@ import { sidebarContent } from './sidebarData'
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col items-center xl:items-start fixed w-20 xl:w-72 p-4 bg-white dark:bg-slate-900 border-r border-r-slate-100 dark:border-r-slate-800 h-screen">
+    <aside className="fixed flex h-screen w-20 flex-col items-center border-r border-r-slate-100 bg-white p-4 dark:border-r-slate-800 dark:bg-slate-900 xl:w-72 xl:items-start">
       <Link href="/">
         <span className="sr-only">Go to Home page</span>
-        <h1 className="text-2xl pb-10 hidden xl:block">nicholascostadev</h1>
+        <h1 className="hidden pb-10 text-2xl xl:block">nicholascostadev</h1>
       </Link>
       <Link href="/">
         <span className="sr-only">Go to Home page</span>
-        <h1 className="text-2xl pb-10 block xl:hidden text-center">ncdev</h1>
+        <h1 className="block pb-10 text-center text-2xl xl:hidden">ncdev</h1>
       </Link>
 
-      <div className="flex flex-col gap-6 w-full justify-start items-start">
+      <div className="flex w-full flex-col items-start justify-start gap-6">
         {sidebarContent.map(({ title, links }) => (
           <div
-            className="w-full flex flex-col justify-center items-center xl:justify-start xl:items-start"
+            className="flex w-full flex-col items-center justify-center xl:items-start xl:justify-start"
             key={title}
           >
-            <h2 className="mb-1 pb-1 border-b w-full text-center xl:text-left border-b-slate-200 dark:border-b-slate-600 text-slate-600 dark:text-slate-400 pointer-events-none select-none">
+            <h2 className="pointer-events-none mb-1 w-full select-none border-b border-b-slate-200 pb-1 text-center text-slate-600 dark:border-b-slate-600 dark:text-slate-400 xl:text-left">
               {title === 'Home page' ? (
                 <>
                   Home <span className="hidden xl:inline">page</span>
@@ -44,7 +44,7 @@ export const Sidebar = () => {
                   target={link.isExternal ? '_blank' : undefined}
                   data-disabled={link.disabled}
                   className={classNames(
-                    'flex justify-center items-center xl:justify-start xl:items-start gap-2 py-2 px-2 xl:px-3  text-slate-800 dark:text-slate-100  transition-colors w-auto xl:w-full rounded-md ',
+                    'flex w-auto items-center justify-center gap-2 rounded-md py-2 px-2 text-slate-800  transition-colors dark:text-slate-100  xl:w-full xl:items-start xl:justify-start xl:px-3 ',
                     'hover:bg-slate-100 dark:hover:bg-slate-800',
                     link.disabled &&
                       'pointer-events-none text-slate-800/30 hover:bg-transparent dark:pointer-events-none dark:text-slate-50/30 hover:dark:bg-transparent',
@@ -52,7 +52,7 @@ export const Sidebar = () => {
                   rel="noreferrer"
                 >
                   <Icon size={20} />
-                  <span className="inline md:hidden sr-only">{link.name}</span>
+                  <span className="sr-only inline md:hidden">{link.name}</span>
                   <div
                     className={classNames(
                       'hidden items-center gap-2 xl:flex',
@@ -71,11 +71,11 @@ export const Sidebar = () => {
           </div>
         ))}
       </div>
-      <div className="pt-4 w-full">
-        <h2 className="mb-1 pb-1 border-b w-full text-center xl:text-left border-b-slate-200 dark:border-b-slate-600 text-slate-600 dark:text-slate-400 pointer-events-none select-none">
+      <div className="w-full pt-4">
+        <h2 className="pointer-events-none mb-1 w-full select-none border-b border-b-slate-200 pb-1 text-center text-slate-600 dark:border-b-slate-600 dark:text-slate-400 xl:text-left">
           Tema
         </h2>
-        <ToggleThemeButton className="flex gap-2 border-none w-full" />
+        <ToggleThemeButton className="flex w-full gap-2 border-none" />
       </div>
     </aside>
   )

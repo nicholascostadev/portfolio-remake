@@ -7,5 +7,3 @@ pnpm install
 # Than run the dev server
 pnpm dev
 ```
-
-

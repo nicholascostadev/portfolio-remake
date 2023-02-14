@@ -20,7 +20,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
   if (Object.keys(post).length === 0) {
     return (
-      <Container className="pt-40 w-[900px]">
+      <Container className="w-[900px] pt-40">
         <div className="flex justify-between gap-4 py-10">
           <h1 className="text-4xl">Post not found</h1>
         </div>
@@ -29,10 +29,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   return (
-    <Container className="pt-40 w-full 2xl:px-0 px-4">
+    <Container className="w-full px-4 pt-40 2xl:px-0">
       <PostContainer post={post} />
       <div className="w-[900px] max-w-full pr-0 xl:pr-64">
-        <div className="h-px w-full bg-slate-100 dark:bg-slate-800 my-10" />
+        <div className="my-10 h-px w-full bg-slate-100 dark:bg-slate-800" />
         <div className="flex flex-col gap-4 pb-10">
           <h2 className="text-2xl">
             😊 If you liked this post, you might also like:
