@@ -22,14 +22,14 @@ export const sidebarContent: SidebarContent = [
       // },
       {
         label: 'Work Experience',
-        href: '#experiences',
+        href: '/#experiences',
         scroll: true,
         icon: Briefcase,
         name: 'Go to Work Experience section',
       },
       {
         label: 'Projects',
-        href: '#projects',
+        href: '/#projects',
         scroll: true,
         icon: Rows,
         name: 'Go to Projects section',

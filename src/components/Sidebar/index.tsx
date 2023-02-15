@@ -40,7 +40,7 @@ export const Sidebar = () => {
               return (
                 <Component
                   key={link.label}
-                  href={isNextLink ? link.href : `${link.href}`}
+                  href={link.href}
                   target={link.isExternal ? '_blank' : undefined}
                   data-disabled={link.disabled}
                   className={classNames(
