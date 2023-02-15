@@ -43,7 +43,8 @@ export default async function BlogPost({ params }: BlogPostProps) {
           {posts &&
             posts.length > 0 &&
             posts.map((item, index) => {
-              if (index > 2 && item.id === post.id) return null
+              console.log({ itemId: item.id, postId: post.id })
+              if (index > 2 || item.id === post.id) return null
 
               return (
                 <PostCard

@@ -28,7 +28,7 @@ const generateMappedHeadings = (postId: number) =>
       [heading]: (props: HeadingProps) => (
         <a
           href={`#${props.id}`}
-          className="group !flex !items-baseline !gap-2 !text-white"
+          className="group !flex !items-baseline !gap-2 !text-slate-800 dark:!text-white"
         >
           <Heading {...props} />
 
@@ -87,10 +87,12 @@ export const PostContainer = ({ post }: PostContainerProps) => {
 
   return (
     <>
-      <div className="right-0 mx-auto w-full max-w-full xl:mx-0 2xl:fixed 2xl:w-[calc(100%-1200px)]">
-        <div className="flex flex-col gap-4 py-10 pl-6">
-          <h2 className="text-2xl">Table of Contents</h2>
-          <ul className="-ml-[3.2rem] flex flex-col gap-2">
+      <div className="right-0 mx-auto w-full max-w-full xl:fixed xl:mx-0 xl:w-[calc(100%-1020px)] 2xl:w-[calc(100%-1200px)]">
+        <div className="mr-auto flex max-w-full flex-col gap-4 rounded-lg border border-slate-400/20 bg-slate-100/20 dark:border-slate-400/20 dark:bg-slate-800/20 2xl:w-96">
+          <h2 className="px-6 pt-4 text-2xl">Table of Contents</h2>
+
+          <div className="h-px w-full bg-slate-400/20" />
+          <ul className="-ml-[3.2rem] flex flex-col gap-2 pl-6 pb-4">
             {headings.map(({ heading, content }) => (
               <li
                 key={content}
