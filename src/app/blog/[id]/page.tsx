@@ -42,17 +42,17 @@ export default async function BlogPost({ params }: BlogPostProps) {
         <div className="flex flex-col gap-4">
           {posts &&
             posts.length > 0 &&
-            posts.map((post, index) => {
-              if (index > 2) return null
+            posts.map((item, index) => {
+              if (index > 2 && item.id === post.id) return null
 
               return (
                 <PostCard
-                  key={post.slug}
-                  content={post.description}
-                  publishedAt={post.published_at}
-                  slug={post.slug}
-                  title={post.title}
-                  postId={post.id}
+                  key={item.slug}
+                  content={item.description}
+                  publishedAt={item.published_at}
+                  slug={item.slug}
+                  title={item.title}
+                  postId={item.id}
                 />
               )
             })}
