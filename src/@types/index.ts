@@ -40,6 +40,7 @@ export type Post = {
 
 export interface SinglePostResponse extends Post {
   body_markdown: string
+  status?: number
 }
 
 export type ProjectsType = {
