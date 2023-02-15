@@ -86,8 +86,31 @@ export const PostContainer = ({ post }: PostContainerProps) => {
   }, [itemIds])
 
   return (
-    <>
-      <div className="right-0 mx-auto w-full max-w-full xl:fixed xl:mx-0 xl:w-[calc(100%-1020px)] 2xl:w-[calc(100%-1200px)]">
+    <div className="flex flex-col-reverse items-start justify-center gap-4 xl:flex-row">
+      <div className="w-[900px] max-w-full">
+        <div className="flex flex-col gap-4 py-10">
+          <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title} </h1>
+          <span className="inline-flex text-base text-slate-800 dark:text-slate-400">
+            Posted on {formatDate(post.published_at || String(new Date()))}
+          </span>
+        </div>
+        <div>
+          <ReactMarkdown
+            rehypePlugins={[rehypePrismPlus, rehypeSlug]}
+            className="markdown-content"
+            components={{
+              a: (props) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" />
+              ),
+              ...generateMappedHeadings(post.id),
+            }}
+          >
+            {post.body_markdown}
+          </ReactMarkdown>
+        </div>
+      </div>
+
+      <div className="top-10 mt-12 w-[900px] max-w-full 2xl:sticky">
         <div className="mr-auto flex max-w-full flex-col gap-4 rounded-lg border border-slate-400/20 bg-slate-100/20 dark:border-slate-400/20 dark:bg-slate-800/20 2xl:w-96">
           <h2 className="px-6 pt-4 text-2xl">Table of Contents</h2>
 
@@ -110,29 +133,6 @@ export const PostContainer = ({ post }: PostContainerProps) => {
           </ul>
         </div>
       </div>
-
-      <div className="w-[900px] max-w-full">
-        <div className="flex flex-col gap-4 py-10">
-          <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title} </h1>
-          <span className="inline-flex text-base text-slate-800 dark:text-slate-400">
-            Posted on {formatDate(post.published_at || String(new Date()))}
-          </span>
-        </div>
-        <div className="pr-0 xl:pr-64">
-          <ReactMarkdown
-            rehypePlugins={[rehypePrismPlus, rehypeSlug]}
-            className="markdown-content"
-            components={{
-              a: (props) => (
-                <a {...props} target="_blank" rel="noopener noreferrer" />
-              ),
-              ...generateMappedHeadings(post.id),
-            }}
-          >
-            {post.body_markdown}
-          </ReactMarkdown>
-        </div>
-      </div>
-    </>
+    </div>
   )
 }

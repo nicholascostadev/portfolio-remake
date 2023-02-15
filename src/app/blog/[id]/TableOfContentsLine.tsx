@@ -20,7 +20,7 @@ export const TableOfContentsLine = ({
     <a
       href={`#${getSlugByTitle(content)}`}
       className={clsxm(
-        'group flex items-center justify-start gap-4',
+        'group flex items-baseline justify-start gap-4',
         "text-slate-800 before:inline-block  before:h-1 before:w-1 before:bg-transparent before:content-[''] dark:text-slate-300",
         isActive && 'before:rounded-full before:bg-blue-600',
         'hover:underline',
