@@ -21,7 +21,7 @@ type PostContainerProps = {
 
 const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const
 
-const generateMappedHeadings = (postId: number) =>
+const generateMappedHeadings = (postSlug: string) =>
   headings.reduce((acc, heading) => {
     const Heading = heading
 
@@ -37,13 +37,13 @@ const generateMappedHeadings = (postId: number) =>
           <button
             onClick={() =>
               handleCopyToClipboard(
-                `${process.env.NEXT_PUBLIC_URL}/blog/${postId}/#${props.id}`,
+                `${process.env.NEXT_PUBLIC_URL}/blog/${postSlug}/#${props.id}`,
               )
             }
           >
             <Link
               size={24}
-              className="hidden group-hover:inline-block group-hover:opacity-40"
+              className="hidden group-focus-within:inline-block group-focus-within:opacity-40 group-hover:inline-block group-hover:opacity-40"
             />
           </button>
         </a>
@@ -104,7 +104,7 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
               a: (props) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" />
               ),
-              ...generateMappedHeadings(post.id),
+              ...generateMappedHeadings(post.slug),
             }}
           >
             {post.body_markdown}
@@ -142,7 +142,7 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
                 <TableOfContentsLine
                   content={content}
                   isActive={activeId === getSlugByTitle(content)}
-                  postId={post.id}
+                  postSlug={post.slug}
                 />
               </li>
             ))}

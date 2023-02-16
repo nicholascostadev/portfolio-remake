@@ -8,13 +8,13 @@ import { Link } from 'phosphor-react'
 type TableOfContentsLineProps = {
   content: string
   isActive?: boolean
-  postId: number
+  postSlug: string
 }
 
 export const TableOfContentsLine = ({
   content,
   isActive,
-  postId,
+  postSlug,
 }: TableOfContentsLineProps) => {
   return (
     <a
@@ -32,7 +32,7 @@ export const TableOfContentsLine = ({
         onClick={() => {
           const url = `${
             process.env.NEXT_PUBLIC_URL
-          }/blog/${postId}/#${getSlugByTitle(content)}`
+          }/blog/${postSlug}/#${getSlugByTitle(content)}`
 
           handleCopyToClipboard(url)
         }}
