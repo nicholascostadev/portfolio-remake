@@ -72,7 +72,7 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
           }
         })
       },
-      { rootMargin: `0% 0% -80% 0%` },
+      { rootMargin: `0% 0% -90% 0%` },
     )
 
     itemIds.forEach((id) => {
@@ -96,7 +96,7 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
             Posted on {formatDate(post.published_at || String(new Date()))}
           </span>
         </div>
-        <div>
+        <div className="pb-40">
           <ReactMarkdown
             rehypePlugins={[rehypePrismPlus, rehypeSlug]}
             className="markdown-content"
