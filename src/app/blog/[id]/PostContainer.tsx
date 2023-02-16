@@ -87,7 +87,7 @@ export const PostContainer = ({ post }: PostContainerProps) => {
 
   return (
     <div className="flex flex-col-reverse items-start justify-center gap-4 xl:flex-row">
-      <div className="w-[900px] max-w-full">
+      <div className="w-[900px] max-w-full px-4">
         <div className="flex flex-col gap-4 py-10">
           <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title} </h1>
           <span className="inline-flex text-base text-slate-800 dark:text-slate-400">

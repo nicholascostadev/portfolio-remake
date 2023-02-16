@@ -1,7 +1,6 @@
 import { Container } from '@/components/Container'
 import { SinglePostResponse, Post } from '@/@types'
 import { PostContainer } from './PostContainer'
-import { PostCard } from '@/components/Blog/PostCard'
 
 type BlogPostProps = {
   params: {
