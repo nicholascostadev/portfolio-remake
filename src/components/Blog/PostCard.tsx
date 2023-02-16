@@ -16,11 +16,12 @@ export const PostCard = ({
   publishedAt,
   content,
   postId,
+  slug,
 }: PostCardProps) => {
   return (
     <div className="rounded-md border border-gray-200 bg-white p-5 shadow dark:border-slate-800 dark:bg-slate-900">
       <div className="flex items-end justify-between gap-4 py-2">
-        <Link href={`/blog/${postId}`}>
+        <Link href={`/blog/${slug}`}>
           <h3 className="text-xl">{title}</h3>
         </Link>
         <span className="text-sm text-slate-800 dark:text-slate-400">
@@ -34,7 +35,7 @@ export const PostCard = ({
         {content}
       </ReactMarkdown>
       <Link
-        href={`/blog/${postId}`}
+        href={`/blog/${slug}`}
         className="mt-1 text-blue-500 dark:text-blue-400"
       >
         See more...

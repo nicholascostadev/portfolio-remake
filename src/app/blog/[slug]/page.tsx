@@ -5,14 +5,14 @@ import { fetchPost, fetchPosts } from '@/api'
 
 type BlogPostProps = {
   params: {
-    id: string
+    slug: string
   }
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
   try {
     const [post, allPosts] = await Promise.all([
-      fetchPost(params.id),
+      fetchPost(params.slug),
       fetchPosts(),
     ])
 
