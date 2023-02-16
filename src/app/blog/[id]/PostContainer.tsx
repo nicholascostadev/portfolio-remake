@@ -88,8 +88,8 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
   }, [itemIds])
 
   return (
-    <div className="flex max-w-full flex-col-reverse items-center justify-center gap-4 xl:flex-row xl:items-start">
-      <div className="w-[720px] max-w-full px-4">
+    <div className="flex max-w-full flex-col-reverse items-start justify-center gap-8 xl:flex-row">
+      <div className="w-[720px] max-w-full">
         <div className="flex flex-col gap-4 py-10">
           <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title} </h1>
           <span className="inline-flex text-base text-slate-800 dark:text-slate-400">
@@ -110,7 +110,7 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
             {post.body_markdown}
           </ReactMarkdown>
 
-          <div className="flex w-[720px] max-w-full flex-col gap-4 py-10 px-4">
+          <div className="flex w-[720px] max-w-full flex-col gap-4 py-10">
             <h2>If you liked this post, you may also like</h2>
             {allPosts.map((post) => (
               <PostCard
@@ -126,8 +126,8 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
         </div>
       </div>
 
-      <div className="top-10 mt-12 w-[720px] max-w-full xl:sticky xl:w-96">
-        <div className="flex max-w-full flex-col gap-4 rounded-lg border border-slate-400/20 bg-slate-100/20 dark:border-slate-400/20 dark:bg-slate-800/20">
+      <div className="top-10 mt-12 w-[720px] max-w-full xl:sticky">
+        <div className="mr-auto flex max-w-full flex-col gap-4 rounded-lg border border-slate-400/20 bg-slate-100/20 dark:border-slate-400/20 dark:bg-slate-800/20 2xl:w-96">
           <h2 className="px-6 pt-4 text-2xl">Table of Contents</h2>
 
           <div className="h-px w-full bg-slate-400/20" />

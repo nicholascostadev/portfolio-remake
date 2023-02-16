@@ -29,7 +29,11 @@ export default async function BlogPost({ params }: BlogPostProps) {
       )
     }
 
-    return <PostContainer post={post} allPosts={allPosts} />
+    return (
+      <Container className="w-full pt-40 pl-4">
+        <PostContainer post={post} allPosts={allPosts} />
+      </Container>
+    )
   } catch (err) {
     return (
       <Container className="w-[720px] pt-40">
