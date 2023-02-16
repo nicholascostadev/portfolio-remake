@@ -19,7 +19,7 @@ export const PostCard = ({
   slug,
 }: PostCardProps) => {
   return (
-    <div className="rounded-md border border-gray-200 bg-white p-5 shadow dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-md border border-gray-200 bg-white p-5 shadow dark:border-slate-700 dark:bg-slate-800">
       <div className="flex items-end justify-between gap-4 py-2">
         <Link href={`/blog/${slug}`}>
           <h3 className="text-xl">{title}</h3>
