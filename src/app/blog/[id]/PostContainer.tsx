@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import { formatDate } from '@/utils/formatDate'
-import { SinglePostResponse } from '@/@types'
+import { Post, SinglePostResponse } from '@/@types'
 import { useEffect, useState } from 'react'
 import { getSlugByTitle } from '../../../utils/getSlugByTitle'
 import { getHeadingsFromMarkdown } from '../../../utils/getHeadingsFromMarkdown'
@@ -12,9 +12,11 @@ import { TableOfContentsLine } from './TableOfContentsLine'
 import { handleCopyToClipboard } from '../../../utils/copyToClipboard'
 import { Link } from 'phosphor-react'
 import { HeadingProps } from 'react-markdown/lib/ast-to-react'
+import { PostCard } from '@/components/Blog/PostCard'
 
 type PostContainerProps = {
   post: SinglePostResponse
+  allPosts: Post[]
 }
 
 const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const
@@ -49,7 +51,7 @@ const generateMappedHeadings = (postId: number) =>
     }
   }, {} as any)
 
-export const PostContainer = ({ post }: PostContainerProps) => {
+export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
   const [activeId, setActiveId] = useState<string | null>(null)
 
   const headings = getHeadingsFromMarkdown(post.body_markdown)
@@ -86,8 +88,8 @@ export const PostContainer = ({ post }: PostContainerProps) => {
   }, [itemIds])
 
   return (
-    <div className="flex flex-col-reverse items-start justify-center gap-4 xl:flex-row">
-      <div className="w-[900px] max-w-full px-4">
+    <div className="flex max-w-full flex-col-reverse items-center justify-center gap-4 xl:flex-row xl:items-start">
+      <div className="w-[720px] max-w-full px-4">
         <div className="flex flex-col gap-4 py-10">
           <h1 className="text-3xl md:text-4xl xl:text-5xl">{post.title} </h1>
           <span className="inline-flex text-base text-slate-800 dark:text-slate-400">
@@ -107,11 +109,25 @@ export const PostContainer = ({ post }: PostContainerProps) => {
           >
             {post.body_markdown}
           </ReactMarkdown>
+
+          <div className="flex w-[720px] max-w-full flex-col gap-4 py-10 px-4">
+            <h2>If you liked this post, you may also like</h2>
+            {allPosts.map((post) => (
+              <PostCard
+                key={post.slug}
+                content={post.description}
+                publishedAt={post.published_at}
+                slug={post.slug}
+                title={post.title}
+                postId={post.id}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="top-10 mt-12 w-[900px] max-w-full 2xl:sticky">
-        <div className="mr-auto flex max-w-full flex-col gap-4 rounded-lg border border-slate-400/20 bg-slate-100/20 dark:border-slate-400/20 dark:bg-slate-800/20 2xl:w-96">
+      <div className="top-10 mt-12 w-[720px] max-w-full xl:sticky xl:w-96">
+        <div className="flex max-w-full flex-col gap-4 rounded-lg border border-slate-400/20 bg-slate-100/20 dark:border-slate-400/20 dark:bg-slate-800/20">
           <h2 className="px-6 pt-4 text-2xl">Table of Contents</h2>
 
           <div className="h-px w-full bg-slate-400/20" />

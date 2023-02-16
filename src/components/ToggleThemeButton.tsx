@@ -9,10 +9,30 @@ type ToggleThemeButtonProps = {
 }
 
 export const ToggleThemeButton = ({ className }: ToggleThemeButtonProps) => {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, themes, systemTheme, forcedTheme, resolvedTheme } =
+    useTheme()
+
+  // console.log({
+  //   theme,
+  //   themes,
+  //   systemTheme,
+  //   forcedTheme,
+  //   resolvedTheme,
+  // })
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    console.log({ systemTheme, theme })
+
+    if ((theme === 'system' && systemTheme === 'dark') || theme === 'dark') {
+      setTheme('light')
+      return
+    }
+
+    setTheme('dark')
+  }
+
+  if (!theme) {
+    return null
   }
 
   return (
@@ -24,14 +44,10 @@ export const ToggleThemeButton = ({ className }: ToggleThemeButtonProps) => {
       name="Trocar tema"
     >
       <span className="not-sr-only hidden xl:inline-flex">Trocar para </span>
-      {theme ? (
-        theme === 'dark' ? (
-          <Sun size={20} />
-        ) : (
-          <Moon size={20} />
-        )
-      ) : (
+      {theme === 'dark' || (theme === 'system' && systemTheme === 'dark') ? (
         <Sun size={20} />
+      ) : (
+        <Moon size={20} />
       )}
     </IconButton>
   )
