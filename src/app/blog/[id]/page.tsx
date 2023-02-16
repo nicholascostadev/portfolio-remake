@@ -11,7 +11,7 @@ type BlogPostProps = {
 
 export default async function BlogPost({ params }: BlogPostProps) {
   const [postResponse, allPostsResponse] = await Promise.allSettled([
-    fetch(`${process.env.DEVTO_URL}${params.id}`),
+    fetch(`${process.env.DEVTO_URL}/${params.id}`),
     fetch(`${process.env.DEVTO_URL}?username=nicholascostadev`),
   ])
 
