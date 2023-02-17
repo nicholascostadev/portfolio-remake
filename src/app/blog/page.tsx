@@ -1,12 +1,8 @@
 import { PostCard } from '@/components/Blog/PostCard'
-import { Post } from '@/@types'
+import { fetchPosts } from '@/api'
 
 export default async function Blog() {
-  const response = await fetch(
-    `${process.env.DEVTO_URL}?username=nicholascostadev`,
-  )
-
-  const data = (await response.json()) as Post[]
+  const posts = await fetchPosts()
 
   return (
     <div className="mx-auto w-[1400px] max-w-full p-4">
@@ -19,10 +15,9 @@ export default async function Blog() {
       <div className="flex flex-col">
         <h2 className="py-4 text-3xl">All posts</h2>
 
-        <div className="flex flex-col gap-4">
-          {data &&
-            data.length > 0 &&
-            data.map((post) => (
+        {posts && posts.length > 0 && (
+          <div className="flex flex-col gap-4">
+            {posts.map((post) => (
               <PostCard
                 key={post.slug}
                 content={post.description}
@@ -32,7 +27,8 @@ export default async function Blog() {
                 postId={post.id}
               />
             ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   )
