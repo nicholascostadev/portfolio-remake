@@ -9,20 +9,9 @@ type ToggleThemeButtonProps = {
 }
 
 export const ToggleThemeButton = ({ className }: ToggleThemeButtonProps) => {
-  const { theme, setTheme, themes, systemTheme, forcedTheme, resolvedTheme } =
-    useTheme()
-
-  // console.log({
-  //   theme,
-  //   themes,
-  //   systemTheme,
-  //   forcedTheme,
-  //   resolvedTheme,
-  // })
+  const { theme, setTheme, systemTheme } = useTheme()
 
   const toggleTheme = () => {
-    console.log({ systemTheme, theme })
-
     if ((theme === 'system' && systemTheme === 'dark') || theme === 'dark') {
       setTheme('light')
       return
