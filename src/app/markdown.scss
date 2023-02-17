@@ -52,6 +52,10 @@
   a:hover {
     text-decoration: underline;
   }
+
+  code {
+    word-break: break-all;
+  }
 }
 
 html[data-theme='dark'] {
