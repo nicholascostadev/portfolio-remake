@@ -14,12 +14,7 @@ export const useWindowSize = () => {
   const { setIsOpen } = useSidebarContext()
 
   const closeSidebarWhenMobile = useCallback(() => {
-    if ((windowSize.width ?? 1920) <= 640) {
-      setIsOpen(false)
-      return
-    }
-
-    setIsOpen(true)
+    setIsOpen((windowSize.width ?? 1920) <= 640)
   }, [setIsOpen, windowSize.width])
 
   useEffect(() => {

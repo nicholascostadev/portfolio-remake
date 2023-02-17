@@ -14,12 +14,15 @@ export const MobileSidebar = () => {
   const { isOpen, setIsOpen, closeSidebar } = useSidebarContext()
   useWindowSize()
 
+  console.log({ isOpen })
+
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Portal>
         <Dialog.Content
           asChild
-          className="z-50 flex flex-col p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=closed]:animate-contentHide data-[state=open]:animate-contentShow"
+          className="z-50 
+          flex flex-col p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=closed]:animate-contentHide data-[state=open]:animate-contentShow"
         >
           <aside
             className={clsxm(
