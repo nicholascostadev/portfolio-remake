@@ -22,34 +22,39 @@ type PostContainerProps = {
 const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const
 
 const generateMappedHeadings = (postSlug: string) =>
-  headings.reduce((acc, heading) => {
-    const Heading = heading
+  headings.reduce(
+    (acc, heading) => {
+      const Heading = heading
 
-    return {
-      ...acc,
-      [heading]: (props: HeadingProps) => (
-        <a
-          href={`#${props.id}`}
-          className="group !flex !items-baseline !gap-2 !text-slate-800 dark:!text-white"
-        >
-          <Heading {...props} />
-
-          <button
-            onClick={() =>
-              handleCopyToClipboard(
-                `${process.env.NEXT_PUBLIC_URL}/blog/${postSlug}/#${props.id}`,
-              )
-            }
+      return {
+        ...acc,
+        [heading]: (props: HeadingProps) => (
+          <a
+            href={`#${props.id}`}
+            className="group !flex !items-baseline !gap-2 !text-slate-800 dark:!text-white"
           >
-            <Link
-              size={24}
-              className="hidden group-focus-within:inline-block group-focus-within:opacity-40 group-hover:inline-block group-hover:opacity-40"
-            />
-          </button>
-        </a>
-      ),
-    }
-  }, {} as any)
+            <Heading {...props} />
+
+            <button
+              onClick={() =>
+                handleCopyToClipboard(
+                  `${process.env.NEXT_PUBLIC_URL}/blog/${postSlug}/#${props.id}`,
+                )
+              }
+            >
+              <Link
+                size={24}
+                className="hidden group-focus-within:inline-block group-focus-within:opacity-40 group-hover:inline-block group-hover:opacity-40"
+              />
+            </button>
+          </a>
+        ),
+      }
+    },
+    {} as {
+      [key in (typeof headings)[number]]: React.FC<HeadingProps>
+    },
+  )
 
 export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -77,12 +82,12 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
 
     itemIds.forEach((id) => {
       if (document.getElementById(id))
-        observer.observe(document.getElementById(id)!)
+        observer.observe(document.getElementById(id) as HTMLElement)
     })
     return () => {
       itemIds.forEach((id) => {
         if (document.getElementById(id))
-          observer.unobserve(document.getElementById(id)!)
+          observer.unobserve(document.getElementById(id) as HTMLElement)
       })
     }
   }, [itemIds])
@@ -101,8 +106,10 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
             rehypePlugins={[rehypePrismPlus, rehypeSlug]}
             className="markdown-content"
             components={{
-              a: (props) => (
-                <a {...props} target="_blank" rel="noopener noreferrer" />
+              a: ({ children, ...props }) => (
+                <a {...props} target="_blank" rel="noopener noreferrer">
+                  {children}
+                </a>
               ),
               ...generateMappedHeadings(post.slug),
             }}
@@ -119,7 +126,6 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
                 publishedAt={post.published_at}
                 slug={post.slug}
                 title={post.title}
-                postId={post.id}
               />
             ))}
           </div>

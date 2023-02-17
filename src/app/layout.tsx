@@ -2,13 +2,13 @@ import { Sidebar } from '@/components/Sidebar'
 import './globals.css'
 import './markdown.scss'
 
-import { Roboto, JetBrains_Mono } from '@next/font/google'
+import { Roboto, JetBrains_Mono as JetBrainsMono } from '@next/font/google'
 import { Providers } from '@/Providers'
 import { Header } from '@/components/Header'
 import { MobileSidebar } from '@/components/MobileSidebar'
 
 const roboto = Roboto({ weight: '400', subsets: ['latin'] })
-const jet = JetBrains_Mono({
+const jet = JetBrainsMono({
   variable: '--jetbrains-mono-font',
   subsets: ['latin'],
 })

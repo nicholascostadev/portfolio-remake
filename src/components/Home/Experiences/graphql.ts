@@ -14,10 +14,6 @@ export const GET_ALL_EXPERIENCES = gql`
   }
 `
 
-export type GQLResponse = {
-  experiences: Experience[]
-}
-
 export type Experience = {
   title: string
   startedAt: string
@@ -26,4 +22,8 @@ export type Experience = {
     html: string
     text: string
   }
+}
+
+export type GQLResponse = {
+  experiences: Experience[]
 }

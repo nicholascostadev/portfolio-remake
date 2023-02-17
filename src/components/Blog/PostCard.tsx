@@ -8,14 +8,12 @@ type PostCardProps = {
   slug: string
   publishedAt: string
   content: string
-  postId: number
 }
 
 export const PostCard = ({
   title,
   publishedAt,
   content,
-  postId,
   slug,
 }: PostCardProps) => {
   return (

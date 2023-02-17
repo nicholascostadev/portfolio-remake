@@ -1,4 +1,4 @@
-import { GQLProjectResponse, ProjectsType } from '@/@types'
+import { ProjectsType } from '@/@types'
 import { gql } from '@apollo/client'
 
 export type GQLResponse = {

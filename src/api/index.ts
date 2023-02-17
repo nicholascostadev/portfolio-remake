@@ -6,7 +6,7 @@ export const fetchPost = async (postSlug: string) => {
     {
       headers: {
         accept: 'application/vnd.forem.api-v1+json',
-        'api-key': process.env.DEVTO_API_KEY!,
+        'api-key': process.env.DEVTO_API_KEY ?? '',
       },
     },
   )
@@ -18,7 +18,7 @@ export const fetchPosts = async () => {
   const response = await fetch(`${process.env.DEVTO_URL}/me`, {
     headers: {
       accept: 'application/vnd.forem.api-v1+json',
-      'api-key': process.env.DEVTO_API_KEY!,
+      'api-key': process.env.DEVTO_API_KEY ?? '',
     },
   })
   const posts = await response.json()

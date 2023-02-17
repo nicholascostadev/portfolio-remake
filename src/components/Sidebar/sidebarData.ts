@@ -2,12 +2,27 @@ import {
   Briefcase,
   GithubLogo,
   IconProps,
-  IdentificationBadge,
   LinkedinLogo,
   Rows,
   Scroll,
   TwitterLogo,
 } from 'phosphor-react'
+
+type SidebarContent = {
+  title: string
+  links: {
+    label: string
+    href: string
+    isExternal?: boolean
+    scroll?: boolean
+    icon?: React.ForwardRefExoticComponent<
+      IconProps & React.RefAttributes<SVGSVGElement>
+    >
+    disabled?: boolean
+    disabledReason?: string
+    name: string
+  }[]
+}[]
 
 export const sidebarContent: SidebarContent = [
   {
@@ -74,19 +89,3 @@ export const sidebarContent: SidebarContent = [
     ],
   },
 ]
-
-type SidebarContent = {
-  title: string
-  links: {
-    label: string
-    href: string
-    isExternal?: boolean
-    scroll?: boolean
-    icon?: React.ForwardRefExoticComponent<
-      IconProps & React.RefAttributes<SVGSVGElement>
-    >
-    disabled?: boolean
-    disabledReason?: string
-    name: string
-  }[]
-}[]

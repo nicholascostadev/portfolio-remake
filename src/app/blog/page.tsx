@@ -24,7 +24,6 @@ export default async function Blog() {
                 publishedAt={post.published_at}
                 slug={post.slug}
                 title={post.title}
-                postId={post.id}
               />
             ))}
           </div>

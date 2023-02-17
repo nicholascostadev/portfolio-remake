@@ -1,3 +1,11 @@
+type Experience = {
+  title: string
+  description: string
+  startedAt: string
+  endedAt?: string
+  current?: boolean
+}
+
 export const experiences: Experience[] = [
   {
     title: 'Heimdall - Front-end Developer',
@@ -13,11 +21,3 @@ export const experiences: Experience[] = [
     current: true,
   },
 ]
-
-type Experience = {
-  title: string
-  description: string
-  startedAt: string
-  endedAt?: string
-  current?: boolean
-}

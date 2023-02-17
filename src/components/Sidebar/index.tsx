@@ -43,7 +43,7 @@ export const Sidebar = () => {
             {links.map((link) => {
               const isNextLink = !link.isExternal && !link.scroll
               const Component = isNextLink ? Link : 'a'
-              const Icon = link.icon!
+              const Icon = link.icon
               return (
                 <Component
                   key={link.label}
@@ -59,7 +59,7 @@ export const Sidebar = () => {
                   rel="noopener noreferrer"
                   onClick={closeSidebar}
                 >
-                  <Icon size={20} />
+                  {Icon && <Icon size={20} />}
                   <span className="sr-only inline md:hidden">{link.name}</span>
                   <div
                     className={classNames(
