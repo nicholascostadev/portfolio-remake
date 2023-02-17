@@ -14,8 +14,6 @@ export const MobileSidebar = () => {
   const { isOpen, setIsOpen, closeSidebar } = useSidebarContext()
   useWindowSize()
 
-  console.log({ isOpen })
-
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Portal>
