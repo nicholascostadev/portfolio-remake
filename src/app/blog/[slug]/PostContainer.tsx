@@ -119,15 +119,19 @@ export const PostContainer = ({ post, allPosts }: PostContainerProps) => {
 
           <div className="flex w-[720px] max-w-full flex-col gap-4 py-10">
             <h2>If you liked this post, you may also like</h2>
-            {allPosts.map((post) => (
-              <PostCard
-                key={post.slug}
-                content={post.description}
-                publishedAt={post.published_at}
-                slug={post.slug}
-                title={post.title}
-              />
-            ))}
+            {allPosts.map((item) => {
+              if (item.slug === post.slug) return null
+
+              return (
+                <PostCard
+                  key={item.slug}
+                  content={item.description}
+                  publishedAt={item.published_at}
+                  slug={item.slug}
+                  title={item.title}
+                />
+              )
+            })}
           </div>
         </div>
       </div>
