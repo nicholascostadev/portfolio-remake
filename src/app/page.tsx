@@ -8,8 +8,10 @@ export default function Home() {
     <div className="w-full">
       <Container className="min-h-screen p-4">
         <Hero />
-        {/* @ts-expect-error async components are not correctly typed yet */}
+        {/* @ts-expect-error async components are not correctly typed ye */}
         <Experiences />
+        {/* @ts-expect-error async components are not correctly typed ye */}
+        <Projects />
       </Container>
     </div>
   )
