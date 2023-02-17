@@ -10,7 +10,22 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        contentShow: {
+          from: { opacity: 0, transform: 'translate(-20px, 0)' },
+          to: { opacity: 1, transform: 'translate(0, 0)' },
+        },
+        contentHide: {
+          from: { opacity: 1, transform: 'translate(0, 0)' },
+          to: { opacity: 0, transform: 'translate(-180px, 0)' },
+        },
+      },
+      animation: {
+        contentShow: 'contentShow 300ms cubic-bezier(0.16, 1, 0.3, 1)',
+        contentHide: 'contentHide 300ms cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+    },
   },
   plugins: [require('@tailwindcss/line-clamp')],
 }
